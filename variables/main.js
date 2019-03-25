@@ -13,3 +13,9 @@ let physics = 4;
 let average = (algebra + geography + physics) / 3;
 
 console.log(`Среднее арифметическое: ${average.toFixed(2)}`);
+
+//Task 3
+let name = 'Artiom';
+let message = `Привет, мир! Меня зовут ${name}.`;
+
+console.log(message);
