@@ -1,4 +1,5 @@
 
+'use strict';
 
 function calculateQuadraticEquation(){
     let a = +window.a.value;
@@ -11,8 +12,20 @@ function calculateQuadraticEquation(){
 }
 
 function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    //return x;
+	let discriminant = b**2 - 4 * a * c;
+	let x = [];
+	if (discriminant < 0) {
+		console.log('Корней нет.');
+	} else if (discriminant === 0) {
+		console.log(discriminant);
+		x.push(-b / 2 * a);
+		return x;
+	} else {
+		console.log(discriminant);
+		x.push((-b + Math.sqrt(discriminant)) / 2 * a,
+			(-b - Math.sqrt(discriminant)) / 2 * a);
+		return x;
+	}
 }
 
 function calculateDrinkTask(){
