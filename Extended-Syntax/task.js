@@ -45,17 +45,27 @@ function askDrink(name,dateOfBirthday){
 		conclusion = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`
 	}
     console.log(conclusion);
-    
+
     return conclusion;
 }
 
 function calculateAverageRating(){
-    let marks = window.marks.value.split("").map(Number);
+    let marks = window.marks.value.split("").map(Number).filter((n)=> !isNaN(n) && n > 0);
     let averageMark = getAverageMark(marks);
     window.averageMark.textContent = averageMark;
 }
 
 function getAverageMark(marks){
-    // код для задачи №3 писать здесь
-    //return averageMark;
+	if (marks.length > 5) {
+		console.log(`Количество введённых оценок: ${marks.length}.\nДальнейший расчёт среднего арифметического будет выполнен для первых пяти оценок.`);
+		marks.length = 5;
+	}
+
+	let marksSum = 0;
+	for (let i = 0; i < marks.length; i++) {
+		marksSum += marks[i];
+	}
+	let averageMark = marksSum / marks.length;
+
+	return averageMark.toFixed(2);
 }
