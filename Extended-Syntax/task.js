@@ -36,9 +36,17 @@ function calculateDrinkTask(){
 }
 
 function askDrink(name,dateOfBirthday){
-    // код для задачи №2 писать здесь
-    //console.log(result)
-    //return result;
+	let now = new Date();
+	let fullYear = (now.getFullYear() - dateOfBirthday.getFullYear());
+	let conclusion;
+	if (fullYear > 18) {
+		conclusion = `Не желаете ли олд-фэшн, ${name}`
+	} else {
+		conclusion = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`
+	}
+    console.log(conclusion);
+    
+    return conclusion;
 }
 
 function calculateAverageRating(){
