@@ -16,6 +16,7 @@ function getResult(a,b,c){
 	let x = [];
 	if (discriminant < 0) {
 		console.log('Корней нет.');
+		return x;
 	} else if (discriminant === 0) {
 		console.log(discriminant);
 		x.push(-b / 2 * a);
@@ -36,10 +37,9 @@ function calculateDrinkTask(){
 }
 
 function askDrink(name,dateOfBirthday){
-	let now = new Date();
-	let fullYear = (now.getFullYear() - dateOfBirthday.getFullYear());
+	let age = (new Date()).getFullYear() - dateOfBirthday.getFullYear();
 	let conclusion;
-	if (fullYear > 18) {
+	if (age > 18) {
 		conclusion = `Не желаете ли олд-фэшн, ${name}`
 	} else {
 		conclusion = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`
@@ -58,8 +58,11 @@ function calculateAverageRating(){
 function getAverageMark(marks){
 	if (marks.length > 5) {
 		console.log(`Количество введённых оценок: ${marks.length}.\nДальнейший расчёт среднего арифметического будет выполнен для первых пяти оценок.`);
-		marks.length = 5;
+		marks.splice(5 - marks.length, marks.length - 5);
+		//marks.length = 5; - Почему нет?
 	}
+
+	console.log(marks);
 
 	let marksSum = 0;
 	for (let i = 0; i < marks.length; i++) {
