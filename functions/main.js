@@ -39,3 +39,43 @@ showSolutionsMessage(2, 5, 2);
 
 console.log('\nТест 3. Вещественных корней нет:\n\n');
 showSolutionsMessage(2, 1, 2);
+
+//Task 2
+
+function getPersonData(secretData) {
+	let decryptedMessage = {
+		firstName: decoder(secretData.aaa),
+		lastName: decoder(secretData.bbb)
+	};
+
+	return decryptedMessage;
+}
+
+function decoder(code) {
+	switch (code) {
+		case 0:
+			return 'Родриго';
+			break;
+		case 1:
+			return 'Эмильо';
+			break;
+
+		default: 'Внимание! Ошибка дешифратора!';
+			return;
+			break;
+	}
+}
+
+console.log('\n--- Task 2 ---\n\n');
+
+console.log('Вариант 1 (aaa = 0, bbb = 0):');
+console.log(getPersonData({aaa: 0, bbb: 0}));
+
+console.log('Вариант 2 (aaa = 0, bbb = 1):');
+console.log(getPersonData({aaa: 0, bbb: 1}));
+
+console.log('Вариант 3 (aaa = 1, bbb = 0):');
+console.log(getPersonData({aaa: 1, bbb: 0}));
+
+console.log('Вариант 4 (aaa = 1, bbb = 1):');
+console.log(getPersonData({aaa: 1, bbb: 1}));
