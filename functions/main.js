@@ -44,27 +44,14 @@ showSolutionsMessage(2, 1, 2);
 //Task 2
 
 function getPersonData(secretData) {
-	let decryptedMessage = {
+	return {
 		firstName: decoder(secretData.aaa),
 		lastName: decoder(secretData.bbb)
 	};
-
-	return decryptedMessage;
 }
 
 function decoder(code) {
-	switch (code) {
-		case 0:
-			return 'Родриго';
-			break;
-		case 1:
-			return 'Эмильо';
-			break;
-
-		default: 'Внимание! Ошибка дешифратора!';
-			return;
-			break;
-	}
+	return (code) ? 'Эмильо' : 'Родриго';
 }
 
 console.log('\n--- Task 2 ---\n\n');
