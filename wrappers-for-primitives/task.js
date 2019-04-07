@@ -64,6 +64,11 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-	// код для задачи №2 писать здесь
-	//return greeting;
+	let greeting = 'Привет, мир! Меня зовут Аноним.';
+	if (name !== 'null' && name !== 'undefined' && name !== '') {
+		greeting = `Привет, мир! Меня зовут ${name}.`;
+	}
+
+	console.log(greeting);
+	return greeting;
 }
