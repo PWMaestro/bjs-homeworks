@@ -50,8 +50,10 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 	let term = countMortageTermInMonth(date);
 	let monthPercent = percent / (100 * 12);
 	let creditSum = amount - contribution;
+	let totalAmount = ((creditSum * (monthPercent + (monthPercent / (Math.pow((1 + monthPercent), term) - 1) ))) * term).toFixed(2);
 
-    return ((creditSum * (monthPercent + (monthPercent / (Math.pow((1 + monthPercent), term) - 1) ))) * term).toFixed(2);
+	console.log(totalAmount);
+    return totalAmount;
 }
 
 function sayHello() {
@@ -62,6 +64,6 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    //return greeting;
+	// код для задачи №2 писать здесь
+	//return greeting;
 }
