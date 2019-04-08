@@ -33,7 +33,8 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
-    // код для задачи №2 писать здесь
+	let sound = animal.sound;
+	return (sound) ? sound : 'null';
 }
 
 function initCalculateStatement() {
