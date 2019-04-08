@@ -48,5 +48,10 @@ function initCalculateStatement() {
 }
 
 function getAverageMark(marks) {
-    // код для задачи №3 писать здесь
+	let marksSum = 0;
+	for (let i = 0; i < marks.length; i++) {
+		marksSum += Number(marks[i]);
+	}
+
+	return Math.round(marksSum / marks.length);
 }
