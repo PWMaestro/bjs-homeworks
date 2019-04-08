@@ -1,3 +1,5 @@
+'use strict'
+
 function initCheckBirthday() {
     const birthday = document.getElementById('birthday').value;
 
@@ -7,7 +9,17 @@ function initCheckBirthday() {
 }
 
 function checkBirthday(birthday) {
-    // код для задачи №1 писать здесь
+	if (birthday == '') {//empty data value check
+		return false;
+	}
+
+	birthday = new Date(Date.parse(birthday));
+	let dateOfAge18 = birthday.setFullYear(birthday.getFullYear() + 18);
+	if (new Date(dateOfAge18) > new Date()) {
+		return false;
+	} else {
+		return true;
+	}
 }
 
 function initPrintAnimalSound() {
