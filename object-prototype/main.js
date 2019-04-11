@@ -13,8 +13,8 @@ function checkBirthday(birthday) {
 		return false;
 	}
 
-	birthday = new Date(Date.parse(birthday));
-	let dateOfAge18 = birthday.setFullYear(birthday.getFullYear() + 18);
+	let birthDate = new Date(Date.parse(birthday));
+	let dateOfAge18 = birthDate.setFullYear(birthDate.getFullYear() + 18);
 	if (new Date(dateOfAge18) > new Date()) {
 		return false;
 	} else {
@@ -33,8 +33,8 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
-	let sound = animal.sound;
-	return (sound) ? sound : 'null';
+	const sound = animal.sound;
+	return sound || 'null';
 }
 
 function initCalculateStatement() {
