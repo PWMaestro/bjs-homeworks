@@ -47,10 +47,11 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 		return showWrongValueMessage('срок ипотеки', date);
 	}
 
-	let term = countMortageTermInMonth(date);
-	let monthPercent = percent / (100 * 12);
-	let creditSum = amount - contribution;
-	let totalAmount = ((creditSum * (monthPercent + (monthPercent / (Math.pow((1 + monthPercent), term) - 1) ))) * term).toFixed(2);
+	const term = countMortageTermInMonth(date);
+	const monthPercent = percent / (100 * 12);
+	const creditSum = amount - contribution;
+	const denominator = (Math.pow((1 + monthPercent), term) - 1);
+	const totalAmount = ((creditSum * (monthPercent + (monthPercent / denominator))) * term).toFixed(2);
 
 	console.log(totalAmount);
     return totalAmount;
@@ -64,10 +65,11 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-	let greeting = 'Привет, мир! Меня зовут Аноним.';
-	if (name !== 'null' && name !== 'undefined' && name !== '') {
-		greeting = `Привет, мир! Меня зовут ${name}.`;
+	let shownName = name;
+	if (name === 'null' || name == 'undefined' || name == '') {
+		shownName = 'Аноним';
 	}
+	const greeting = `Привет, мир! Меня зовут ${shownName}`;
 
 	console.log(greeting);
 	return greeting;
