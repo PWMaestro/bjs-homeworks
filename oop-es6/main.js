@@ -43,12 +43,14 @@ class Arm extends Weapon {
 class Bow extends Weapon {
 	constructor(name = 'Лук', attack = 10, durability = 200, range = 3) {
 		super(name, attack, durability, range);
+		this.name = 'Лук';
 	}
 }
 
 class Sword extends Weapon {
 	constructor(name = 'Меч', attack = 25, durability = 500, range = 1) {
 		super(name, attack, durability, range);
+		this.name = 'Меч';
 	}
 }
 
@@ -61,6 +63,7 @@ class Dagger extends Weapon {
 class Staff extends Weapon {
 	constructor(name = 'Посох', attack = 8, durability = 300, range = 2) {
 		super(name, attack, durability, range);
+		this.name = 'Посох';
 	}
 }
 
@@ -108,42 +111,29 @@ class StudentLog {
 		return !(isNaN(parseFloat(grade)) || (grade < 1 || grade > 5));
 	}
 
-	checkSubjectExistance(subject) {
+	isSubjectExist(subject) {
 		return (subject in this.subjects);
 	}
 
-	showAllSubjects() {
-		let subjectsArray = [];
-		for (let prop in this.subjects) {
-			subjectsArray.push(prop);
-		}
-
-		return subjectsArray;
-	}
-
-	showGradesNumberBySubject(subject) {
+	getGradesCountBySubject(subject) {
 		return this.subjects[subject].length;
 	}
 
 	addGrade(grade, subject) {
 		if (!this.checkGrade(grade)) {
 			console.log(`Вы пытались поставить оценку: ${grade} по предмету: ${subject}. Допускаются только числа от 1 до 5.`);
-			if (this.checkSubjectExistance(subject)) {
-				return this.showGradesNumberBySubject(subject);
-			} else {
-				return 0;
-			}
+			return (this.isSubjectExist(subject)) ? this.getGradesCountBySubject(subject) : 0;
 
-		} else if (!this.checkSubjectExistance(subject)) {
+		} else if (!this.isSubjectExist(subject)) {
 			this.subjects[subject] = [];
 		}
 
 		this.subjects[subject].push(grade);
-		return this.showGradesNumberBySubject(subject);
+		return this.getGradesCountBySubject(subject);
 	}
 
 	getAverageBySubject(subject) {
-		if (!this.checkSubjectExistance(subject)) {
+		if (!this.isSubjectExist(subject)) {
 			console.log('Указанного вами предмета в журнале не существует!');
 			return 0;
 		}
@@ -158,7 +148,7 @@ class StudentLog {
 	getTotalAverage() {
 		let summ = 0;
 		let subjectsCounter = 0;
-		if (this.showAllSubjects().length === 0) {
+		if (Object.keys(this.subjects).length === 0) {
 			console.log('В журнал не занесено ни одного предмета!');
 			return 0;
 
@@ -261,7 +251,7 @@ console.log(log.addGrade(true, 'geometry'));
 
 // -------- Counting Average by subject and all Subjects --------
 
-console.log(`\nИзучает предметы: ${log.showAllSubjects()}`);
+console.log(`\nИзучает предметы: ${Object.keys(log.subjects).join(', ')}`);
 console.log(`\nСреднее арифметическое по предмету algebra: ${log.getAverageBySubject('algebra')}`);
 console.log(`\nСреднее арифметическое по предмету geometry: ${log.getAverageBySubject('geometry')}`);
 console.log(`\nСреднее арифметическое по предмету history: ${log.getAverageBySubject('history')}`);
